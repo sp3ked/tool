@@ -1,0 +1,69 @@
+/* Home.css */
+
+/* Set up a dark background with centered content */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+    text-align: center;
+  }
+  
+  /* Title styling */
+  .home-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Container for the tool links */
+  .tool-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 80%;
+    max-width: 500px;
+  }
+  
+  /* Styling for floating tool buttons */
+  .floating-button {
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: #1a73e8;
+    color: #fff;
+    font-size: 1.2rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  /* Hover effect */
+  .floating-button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Floating animation */
+  @keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+  
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 600px) {
+    .home-title {
+      font-size: 1.8rem;
+    }
+    
+    .floating-button {
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+  }
+  
