@@ -1,69 +1,235 @@
-/* Home.css */
+/* src/tools/home.css */
 
-/* Set up a dark background with centered content */
-.home-container {
+/* Base styles */
+.home-page {
+    min-height: 100vh;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 2rem;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Header styles */
+  .header {
+    max-width: 64rem;
+    margin: 0 auto 3rem auto;
+  }
+  
+  .header-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    margin-bottom: 1rem;
+  }
+  
+  .header-subtitle {
+    color: #9CA3AF;
+  }
+  
+  /* Search and controls container */
+  .controls-container {
+    max-width: 64rem;
+    margin: 0 auto 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  @media (min-width: 768px) {
+    .controls-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  
+  /* Search bar styles */
+  .search-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  @media (min-width: 768px) {
+    .search-wrapper {
+      width: 24rem;
+    }
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    background-color: #111827;
+    border: 1px solid #374151;
+    border-radius: 0.5rem;
+    color: #ffffff;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+  }
+  
+  .search-input::placeholder {
+    color: #9CA3AF;
+  }
+  
+  /* View toggle button */
+  .view-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #111827;
+    border-radius: 0.5rem;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .view-toggle:hover {
+    background-color: #1F2937;
+  }
+  
+  /* Floating cards container */
+  .floating-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-color: #111827;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  
+  /* Floating card styles */
+  .floating-card {
+    position: absolute;
+    padding: 1rem;
+    background-color: #FFD700;
+    color: #000000;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .floating-card:hover {
+    background-color: #FDE68A;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.1);
+    z-index: 50;
+  }
+  
+  .floating-card-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #000;
-    color: #fff;
-    overflow: hidden;
+    gap: 0.5rem;
+  }
+  
+  .card-icon {
+    font-size: 1.5rem;
+  }
+  
+  .card-title {
+    font-weight: 500;
     text-align: center;
   }
   
-  /* Title styling */
-  .home-title {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
+  /* List view styles */
+  .list-container {
+    max-width: 64rem;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
   }
   
-  /* Container for the tool links */
-  .tool-links {
+  .list-item {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    width: 80%;
-    max-width: 500px;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #111827;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background-color 0.2s ease;
   }
   
-  /* Styling for floating tool buttons */
-  .floating-button {
-    display: inline-block;
-    padding: 15px 25px;
-    background-color: #1a73e8;
-    color: #fff;
-    font-size: 1.2rem;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: transform 0.2s;
+  .list-item:hover {
+    background-color: #1F2937;
+  }
+  
+  /* Animation for floating effect */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .floating-animation {
     animation: float 6s ease-in-out infinite;
   }
   
-  /* Hover effect */
-  .floating-button:hover {
-    transform: scale(1.1);
+  /* Loading state styles */
+  .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #FFD700;
+    font-size: 1.5rem;
   }
   
-  /* Floating animation */
-  @keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
+  /* Error state styles */
+  .error {
+    text-align: center;
+    color: #EF4444;
+    padding: 2rem;
   }
   
-  /* Responsive adjustments for smaller screens */
-  @media (max-width: 600px) {
-    .home-title {
-      font-size: 1.8rem;
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .home-page {
+      padding: 1rem;
     }
-    
-    .floating-button {
-      padding: 10px 20px;
-      font-size: 1rem;
+  
+    .header-title {
+      font-size: 2rem;
+    }
+  
+    .floating-container {
+      height: 400px;
+    }
+  
+    .floating-card {
+      padding: 0.75rem;
+    }
+  
+    .card-icon {
+      font-size: 1.25rem;
+    }
+  
+    .list-item {
+      padding: 0.75rem;
     }
   }
-  
