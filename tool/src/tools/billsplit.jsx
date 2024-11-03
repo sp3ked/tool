@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, DollarSign, Users, Percent, RefreshCw } from 'lucide-react';
+import { ArrowLeft, DollarSign, Users, RefreshCw } from 'lucide-react';
 import './tools.css';
 
 const BillSplitter = () => {
