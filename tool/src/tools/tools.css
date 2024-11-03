@@ -879,3 +879,564 @@
       width: 100%;
     }
   }
+
+  /* Add these styles to your existing tools.css */
+
+.font-pairing-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .font-controls-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .toggle-slider {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+    background-color: var(--color-border);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+  }
+  
+  .dark-mode-toggle input {
+    display: none;
+  }
+  
+  .toggle-slider:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+  }
+  
+  .dark-mode-toggle input:checked + .toggle-slider {
+    background-color: var(--color-primary);
+  }
+  
+  .dark-mode-toggle input:checked + .toggle-slider:before {
+    transform: translateX(24px);
+  }
+  
+  .font-selection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .font-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .font-preview {
+    padding: 2rem;
+    background-color: var(--color-background);
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-border);
+  }
+  
+  .heading-preview {
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .body-preview {
+    line-height: 1.6;
+  }
+  
+  .font-size-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .size-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .range-input {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    background: var(--color-border);
+    border-radius: 3px;
+    outline: none;
+  }
+  
+  .range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .range-input::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+  }
+  
+  .css-code-section {
+    padding: 1rem;
+    background-color: var(--color-background);
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-border);
+  }
+  
+  .related-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .tool-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .tool-links a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  
+  .tool-links a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Dark mode styles */
+  .dark-mode {
+    --color-background: #1a1a1a;
+    --color-card: #2d2d2d;
+    --color-text: #ffffff;
+    --color-text-light: #a0a0a0;
+    --color-border: #404040;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .font-selection-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  
+    .font-preview {
+      padding: 1rem;
+    }
+  
+    .heading-preview {
+      font-size: 32px !important;
+    }
+  
+    .tool-links {
+      flex-direction: column;
+    }
+  }
+
+  /* Add these styles to your existing tools.css */
+
+.coin-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+  }
+  
+  /* Coin styles */
+  .coin {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.1s linear;
+  }
+  
+  .coin.flipping {
+    animation: flip-coin 1.5s ease-out forwards;
+  }
+  
+  .coin-sides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  
+  .heads,
+  .tails {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--color-primary), #ffe44d);
+    border: 8px solid #ffd700;
+    box-shadow: 
+      inset 0 0 15px rgba(0,0,0,0.2),
+      0 0 20px rgba(0,0,0,0.1);
+  }
+  
+  .heads {
+    transform: rotateY(0deg);
+  }
+  
+  .tails {
+    transform: rotateY(180deg);
+  }
+  
+  .content {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  /* Coin animation */
+  @keyframes flip-coin {
+    0% {
+      transform: rotateY(0) rotateX(0);
+    }
+    100% {
+      transform: rotateY(720deg) rotateX(1440deg);
+    }
+  }
+  
+  .coin.show-heads {
+    transform: rotateY(0deg);
+  }
+  
+  .coin.show-tails {
+    transform: rotateY(180deg);
+  }
+  
+  /* Result text */
+  .coin-result {
+    min-height: 40px;
+    text-align: center;
+  }
+  
+  .result-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-text);
+    animation: pop-in 0.3s ease-out;
+  }
+  
+  @keyframes pop-in {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Flip button */
+  .flip-button {
+    min-width: 150px;
+  }
+  
+  .flip-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  /* Statistics */
+  .coin-stats {
+    display: flex;
+    gap: 2rem;
+    padding: 1.5rem;
+    background-color: var(--color-background);
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-border);
+  }
+  
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+  
+  .stat-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--color-text);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .coin {
+      width: 150px;
+      height: 150px;
+    }
+  
+    .heads,
+    .tails {
+      font-size: 2.5rem;
+      border-width: 6px;
+    }
+  
+    .content {
+      border-width: 3px;
+    }
+  
+    .coin-stats {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+  }
+  
+  /* Add shine effect */
+  .heads::after,
+  .tails::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.1) 50%,
+      rgba(255,255,255,0) 100%
+    );
+    transform: rotate(45deg);
+    animation: shine 2s infinite;
+    pointer-events: none;
+  }
+  
+  @keyframes shine {
+    0% {
+      transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(100%) rotate(45deg);
+    }
+  }
+
+  /* Add these styles to your existing tools.css */
+
+.bill-splitter-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.bill-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--color-card);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.currency-input,
+.number-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currency-icon,
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--color-text-light);
+}
+
+.currency-input input,
+.number-input input {
+  padding-left: 3rem;
+}
+
+.tip-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.tip-button {
+  padding: 0.75rem;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--color-text);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tip-button:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-1px);
+}
+
+.tip-button.active {
+  background-color: var(--color-primary-light);
+  box-shadow: var(--shadow-md);
+}
+
+.custom-tip-input input {
+  width: 100%;
+  text-align: center;
+}
+
+.bill-results-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--color-background);
+  border-radius: 1rem;
+  border: 2px solid var(--color-border);
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.result-item {
+  padding: 1.5rem;
+  background-color: var(--color-card);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.result-label {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.per-person {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+}
+
+.result-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-top: 0.5rem;
+}
+
+.total-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: var(--color-card);
+  border-radius: 0.5rem;
+}
+
+.breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-text);
+}
+
+.breakdown-item.total {
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.reset-button {
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bill-splitter-container {
+    grid-template-columns: 1fr;
+  }
+
+  .bill-input-section,
+  .bill-results-section {
+    padding: 1.5rem;
+  }
+
+  .tip-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .results-grid {
+    gap: 1rem;
+  }
+
+  .result-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tip-grid {
+    grid-template-columns: 1fr;
+  }
+}
