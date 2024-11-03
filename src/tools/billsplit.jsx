@@ -18,21 +18,21 @@ const BillSplitter = () => {
   const tipOptions = [10, 15, 18, 20, 25];
 
   useEffect(() => {
-    calculateSplit();
+    const calculate = () => {
+      const bill = parseFloat(billAmount) || 0;
+      const tip = (bill * (tipPercent / 100));
+      const total = bill + tip;
+      
+      setSplit({
+        tipAmount: tip,
+        totalWithTip: total,
+        perPerson: total / numPeople,
+        tipPerPerson: tip / numPeople
+      });
+    };
+  
+    calculate();
   }, [billAmount, tipPercent, numPeople]);
-
-  const calculateSplit = () => {
-    const bill = parseFloat(billAmount) || 0;
-    const tip = (bill * (tipPercent / 100));
-    const total = bill + tip;
-    
-    setSplit({
-      tipAmount: tip,
-      totalWithTip: total,
-      perPerson: total / numPeople,
-      tipPerPerson: tip / numPeople
-    });
-  };
 
   const resetCalculator = () => {
     setBillAmount('');

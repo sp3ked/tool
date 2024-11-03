@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Copy, RefreshCw } from 'lucide-react';
 import './tools.css';
@@ -10,21 +10,22 @@ const PasswordGenerator = () => {
     uppercase: true,
     lowercase: true,
     numbers: true,
-    symbols: true
+    symbols: true,
   });
   const [copied, setCopied] = useState(false);
 
-  const characters = {
+  // Wrap characters in useMemo to prevent re-creation on every render
+  const characters = useMemo(() => ({
     uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     lowercase: 'abcdefghijklmnopqrstuvwxyz',
     numbers: '0123456789',
-    symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
-  };
+    symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?',
+  }), []);
 
-  const generatePassword = () => {
+  const generatePassword = useCallback(() => {
     let charset = '';
     let newPassword = '';
-    
+
     // Build character set based on selected options
     if (options.uppercase) charset += characters.uppercase;
     if (options.lowercase) charset += characters.lowercase;
@@ -44,7 +45,7 @@ const PasswordGenerator = () => {
     }
 
     setPassword(newPassword);
-  };
+  }, [length, options, characters]);
 
   const copyToClipboard = async () => {
     try {
@@ -56,17 +57,15 @@ const PasswordGenerator = () => {
     }
   };
 
-  // Generate password on initial render and when options change
   useEffect(() => {
     generatePassword();
-  }, [length, options]);
+  }, [generatePassword]);
 
   const handleOptionChange = (option) => {
-    setOptions(prev => {
-      // Prevent unchecking if it's the last checked option
+    setOptions((prev) => {
       const newOptions = {
         ...prev,
-        [option]: !prev[option]
+        [option]: !prev[option],
       };
       if (!Object.values(newOptions).includes(true)) {
         return prev;
@@ -95,16 +94,16 @@ const PasswordGenerator = () => {
             className="password-display"
           />
           <div className="password-actions">
-            <button 
-              onClick={copyToClipboard} 
+            <button
+              onClick={copyToClipboard}
               className="tool-button icon-button"
               title="Copy to clipboard"
             >
               <Copy size={20} />
               {copied ? 'Copied!' : 'Copy'}
             </button>
-            <button 
-              onClick={generatePassword} 
+            <button
+              onClick={generatePassword}
               className="tool-button icon-button"
               title="Generate new password"
             >

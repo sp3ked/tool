@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRightLeft } from 'lucide-react';
 import './tools.css';
@@ -10,7 +10,8 @@ const UnitConverter = () => {
   const [inputValue, setInputValue] = useState('');
   const [result, setResult] = useState('');
 
-  const categories = {
+  // Wrap categories in useMemo to prevent re-creation on each render
+  const categories = useMemo(() => ({
     length: {
       name: 'Length',
       units: {
@@ -53,18 +54,11 @@ const UnitConverter = () => {
         cups: { name: 'Cups (cup)', factor: 0.236588 }
       }
     }
-  };
+  }), []);
 
-  useEffect(() => {
-    // Set default units when category changes
-    const categoryUnits = Object.keys(categories[category].units);
-    setFromUnit(categoryUnits[0]);
-    setToUnit(categoryUnits[1]);
-  }, [category]);
-
-  const convertTemperature = (value, from, to) => {
+  // Wrap convertTemperature in useCallback to prevent re-creation on each render
+  const convertTemperature = useCallback((value, from, to) => {
     let converted;
-    // First convert to Celsius
     let celsius;
     switch (from) {
       case 'celsius':
@@ -79,7 +73,6 @@ const UnitConverter = () => {
       default:
         return 0;
     }
-    // Then convert from Celsius to target
     switch (to) {
       case 'celsius':
         converted = celsius;
@@ -94,9 +87,16 @@ const UnitConverter = () => {
         converted = 0;
     }
     return converted;
-  };
+  }, []);
 
-  const convert = () => {
+  useEffect(() => {
+    // Set default units when category changes
+    const categoryUnits = Object.keys(categories[category].units);
+    setFromUnit(categoryUnits[0]);
+    setToUnit(categoryUnits[1]);
+  }, [category, categories]);
+
+  useEffect(() => {
     if (!inputValue) {
       setResult('');
       return;
@@ -121,11 +121,7 @@ const UnitConverter = () => {
       maximumFractionDigits: 6,
       minimumFractionDigits: 0
     }));
-  };
-
-  useEffect(() => {
-    convert();
-  }, [inputValue, fromUnit, toUnit]);
+  }, [inputValue, fromUnit, toUnit, category, categories, convertTemperature]);
 
   const swapUnits = () => {
     setFromUnit(toUnit);
