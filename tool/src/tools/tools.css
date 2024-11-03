@@ -392,3 +392,490 @@
       gap: 0.25rem;
     }
   }
+
+  /* Add these styles to your existing tools.css */
+
+.wordcounter-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.wordcounter-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wordcounter-textarea {
+  width: 100%;
+  min-height: 300px;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background-color: var(--color-card);
+  color: var(--color-text);
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+  transition: all 0.2s ease;
+}
+
+.wordcounter-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+.textarea-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.icon-button.secondary {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+}
+
+.icon-button.secondary:hover {
+  background-color: var(--color-hover);
+  border-color: var(--color-primary);
+}
+
+.wordcounter-stats-section {
+  background-color: var(--color-background);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid var(--color-border);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-box {
+  background-color: var(--color-card);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  border: 1px solid var(--color-border);
+  transition: all 0.2s ease;
+}
+
+.stat-box:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-text);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
+.stat-unit {
+  color: var(--color-text-light);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .textarea-actions {
+    flex-direction: column;
+  }
+
+  .icon-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wordcounter-textarea {
+    min-height: 200px;
+  }
+
+  .stat-box {
+    padding: 1rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+}
+
+/* Add these styles to your existing tools.css */
+
+.wordcounter-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .wordcounter-input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .textarea-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .wordcounter-textarea {
+    width: 100%;
+    min-height: 300px;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background-color: var(--color-card);
+    color: var(--color-text);
+    font-family: inherit;
+    line-height: 1.5;
+    resize: vertical;
+    transition: all 0.2s ease;
+  }
+  
+  .wordcounter-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+  }
+  
+  .textarea-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+  
+  .icon-button.secondary {
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+  }
+  
+  .icon-button.secondary:hover {
+    background-color: var(--color-hover);
+    border-color: var(--color-primary);
+  }
+  
+  .wordcounter-stats-section {
+    background-color: var(--color-background);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-border);
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .stat-box {
+    background-color: var(--color-card);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    transition: all 0.2s ease;
+  }
+  
+  .stat-box:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary);
+  }
+  
+  .stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color-text);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-label {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+  }
+  
+  .stat-unit {
+    color: var(--color-text-light);
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  
+    .textarea-actions {
+      flex-direction: column;
+    }
+  
+    .icon-button {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .wordcounter-textarea {
+      min-height: 200px;
+    }
+  
+    .stat-box {
+      padding: 1rem;
+    }
+  
+    .stat-value {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Add these styles to your existing tools.css */
+
+.lorem-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .lorem-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: var(--color-background);
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-border);
+  }
+  
+  .lorem-output {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .lorem-textarea {
+    width: 100%;
+    min-height: 300px;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background-color: var(--color-card);
+    color: var(--color-text);
+    font-family: inherit;
+    line-height: 1.6;
+    resize: vertical;
+    transition: all 0.2s ease;
+  }
+  
+  .lorem-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .lorem-controls {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+    }
+  
+    .lorem-textarea {
+      min-height: 200px;
+    }
+  
+    .icon-button {
+      width: 100%;
+    }
+  }
+
+  /* Add these styles to your existing tools.css */
+
+.json-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .json-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: var(--color-background);
+    border-radius: 0.5rem;
+    border: 2px solid var(--color-border);
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .file-input {
+    display: none;
+  }
+  
+  .file-input-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-primary);
+    color: var(--color-text);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .file-input-label:hover {
+    background-color: var(--color-primary-light);
+    transform: translateY(-1px);
+  }
+  
+  .json-editor-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  
+  .json-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .json-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .json-header h3 {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 1.1rem;
+  }
+  
+  .json-error {
+    color: #ef4444;
+    font-size: 0.875rem;
+    padding: 0.5rem;
+    background-color: #fee2e2;
+    border-radius: 0.25rem;
+  }
+  
+  .json-textarea {
+    width: 100%;
+    min-height: 400px;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background-color: var(--color-card);
+    color: var(--color-text);
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: all 0.2s ease;
+  }
+  
+  .json-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+  }
+  
+  .json-textarea.has-error {
+    border-color: #ef4444;
+  }
+  
+  .json-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    align-self: center;
+  }
+  
+  .json-output-actions {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .json-editor-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .json-actions {
+      flex-direction: row;
+      padding: 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .json-controls {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .button-group {
+      width: 100%;
+    }
+  
+    .file-input-label,
+    .tool-button {
+      flex: 1;
+    }
+  
+    .json-textarea {
+      min-height: 300px;
+    }
+  
+    .json-output-actions {
+      flex-direction: column;
+    }
+  
+    .json-output-actions .tool-button {
+      width: 100%;
+    }
+  }
