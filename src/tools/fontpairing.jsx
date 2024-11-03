@@ -4,7 +4,6 @@ import { ArrowLeft, Copy, Shuffle } from 'lucide-react';
 import './tools.css';
 
 const FontPairingGenerator = () => {
-  const [darkMode, setDarkMode] = useState(false);
   const [headingFont, setHeadingFont] = useState('Quicksand');
   const [bodyFont, setBodyFont] = useState('Karla');
   const [headingSize, setHeadingSize] = useState(57);
@@ -70,7 +69,7 @@ body, p {
   };
 
   return (
-    <div className={`tool-page ${darkMode ? 'dark-mode' : ''}`}>
+    <div className={`tool-page}`}>
       <div className="tool-header">
         <Link to="/" className="back-button">
           <ArrowLeft size={24} />
@@ -91,15 +90,7 @@ body, p {
               <Shuffle size={20} />
               Generate Random Pair
             </button>
-            <label className="dark-mode-toggle">
-              <span>Dark Mode</span>
-              <input
-                type="checkbox"
-                checked={darkMode}
-                onChange={(e) => setDarkMode(e.target.checked)}
-              />
-              <span className="toggle-slider"></span>
-            </label>
+            
           </div>
 
           {/* Font Selection */}
