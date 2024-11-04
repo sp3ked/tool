@@ -10,22 +10,26 @@
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
   --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
   --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-  --max-width: 1400px;
-  --padding-x: 2rem;
+  --container-padding: 2rem;
+  --content-max-width: 1400px;
 }
 
-/* Layout */
+/* Base Layout */
 .home-page {
   min-height: 100vh;
   background-color: var(--color-background);
-  padding: var(--padding-x);
+  width: 100%;
+  overflow-x: hidden;
+  padding: 2rem 0;
 }
 
-/* Header Styles */
+/* Header Section */
 .header {
-  max-width: var(--max-width);
-  margin: 0 auto 3rem;
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto 2rem;
   text-align: center;
+  padding: 0 var(--container-padding);
 }
 
 .header-title {
@@ -42,10 +46,10 @@
 
 /* Search Controls */
 .controls-container {
-  max-width: var(--max-width);
-  margin: 0 auto 2rem;
-  padding: 0 1rem;
   width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto 2rem;
+  padding: 0 var(--container-padding);
 }
 
 .search-wrapper {
@@ -87,12 +91,13 @@
 /* Categories Grid */
 .categories-container {
   width: 100%;
-  max-width: var(--max-width);
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 0 var(--padding-x);
+  padding: 0 var(--container-padding);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
+  box-sizing: border-box;
 }
 
 .category-section {
@@ -103,10 +108,13 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .category-title {
   font-size: 1.25rem;
+  font-weight: 600;
   color: var(--color-text);
   margin: 0 0 1rem;
   padding-bottom: 0.75rem;
@@ -132,6 +140,8 @@
   text-decoration: none;
   color: var(--color-text);
   transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .tool-card:hover {
@@ -145,39 +155,54 @@
   font-size: 1.5rem;
   min-width: 2rem;
   text-align: center;
+  flex-shrink: 0;
 }
 
 .tool-name {
   font-weight: 500;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Responsive Breakpoints */
 @media (max-width: 1200px) {
+  :root {
+    --container-padding: 1.5rem;
+  }
+
   .categories-container {
     grid-template-columns: repeat(3, 1fr);
-    --padding-x: 1.5rem;
   }
 }
 
 @media (max-width: 900px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
   .categories-container {
     grid-template-columns: repeat(2, 1fr);
-    --padding-x: 1rem;
     gap: 1rem;
+  }
+
+  .header-title {
+    font-size: 2.25rem;
   }
 
   .category-section {
     padding: 1.25rem;
   }
-
-  .search-wrapper {
-    max-width: 28rem;
-  }
 }
 
 @media (max-width: 600px) {
   :root {
-    --padding-x: 0.5rem;
+    --container-padding: 1rem;
+  }
+
+  .home-page {
+    padding: 1rem 0;
   }
 
   .categories-container {
@@ -188,25 +213,26 @@
     font-size: 2rem;
   }
 
+  .header-subtitle {
+    font-size: 1rem;
+  }
+
   .category-section {
     padding: 1rem;
   }
 
   .tool-card {
-    padding: 0.75rem;
+    padding: 0.875rem;
   }
 
   .tool-icon {
     font-size: 1.25rem;
-  }
-
-  .search-wrapper {
-    max-width: 100%;
+    min-width: 1.75rem;
   }
 
   .search-input {
     font-size: 0.875rem;
-    padding: 0.625rem 1rem 0.625rem 2.25rem;
+    padding: 0.75rem 1rem 0.75rem 2.25rem;
   }
 
   .search-icon {
@@ -214,8 +240,24 @@
     width: 1rem;
     height: 1rem;
   }
+}
 
-  .controls-container {
-    padding: 0 0.5rem;
+/* Fix for extreme mobile sizes */
+@media (max-width: 350px) {
+  :root {
+    --container-padding: 0.75rem;
   }
+
+  .tool-card {
+    padding: 0.75rem;
+  }
+
+  .category-section {
+    padding: 0.875rem;
+  }
+}
+
+/* Ensure proper box sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
