@@ -8,32 +8,35 @@ const Home = () => {
 
   const toolCategories = {
     'Design & Colors': [
-      { id: 1, name: 'Color Palette Generator', path: '/colorpalette', icon: '🎨' },
-      { id: 2, name: 'RGB to HEX', path: '/hex', icon: '🔄' },
-      { id: 3, name: 'Font Pairing Generator', path: '/fontpairing', icon: '🔤' },
+      { id: 1, name: 'Color Palette Generator', path: '/colorpalette', icon: '🎨', description: 'Create beautiful color combinations' },
+      { id: 2, name: 'RGB to HEX', path: '/hex', icon: '🔄', description: 'Convert colors between formats' },
+      { id: 3, name: 'Font Pairing Generator', path: '/fontpairing', icon: '🔤', description: 'Find perfect font combinations' },
     ],
     'Development': [
-      { id: 4, name: 'JSON Formatter', path: '/jsonformatter', icon: '{ }' },
-      { id: 5, name: 'QR Code Generator', path: '/qrcode', icon: '🔲' },
+      { id: 4, name: 'JSON Formatter', path: '/jsonformatter', icon: '{ }', description: 'Format and validate JSON data' },
+      { id: 5, name: 'QR Code Generator', path: '/qrcode', icon: '🔲', description: 'Create custom QR codes' },
     ],
     'Text Tools': [
-      { id: 6, name: 'Lorem Ipsum Generator', path: '/loremipsum', icon: '📃' },
-      { id: 7, name: 'Word Counter', path: '/wordcounter', icon: '📝' },
+      { id: 6, name: 'Lorem Ipsum Generator', path: '/loremipsum', icon: '📃', description: 'Generate placeholder text' },
+      { id: 7, name: 'Word Counter', path: '/wordcounter', icon: '📝', description: 'Count words and characters' },
     ],
     'Utilities': [
-      { id: 8, name: 'Password Generator', path: '/passwordgen', icon: '🔐' },
-      { id: 9, name: 'Unit Converter', path: '/unitconverter', icon: '📊' },
-      { id: 10, name: 'Bill Splitter', path: '/bill-splitter', icon: '💵' },
+      { id: 8, name: 'Password Generator', path: '/passwordgen', icon: '🔐', description: 'Create secure passwords' },
+      { id: 9, name: 'Unit Converter', path: '/unitconverter', icon: '📊', description: 'Convert between units' },
+      { id: 10, name: 'Bill Splitter', path: '/bill-splitter', icon: '💵', description: 'Split bills easily' },
     ],
-    'Fun': [
-      { id: 11, name: 'Coin Flip', path: '/coinflip', icon: '🪙' },
+    'Games': [
+      { id: 11, name: 'Coin Flip', path: '/coinflip', icon: '🪙', description: 'Flip a virtual coin' },
+      { id: 12, name: 'Snake', path: '/snake', icon: '🐍', description: 'Classic snake game' },
+      // { id: 13, name: 'Tetris', path: '/tetris', icon: '🎮', description: 'Classic block-stacking game' }
     ],
   };
 
   const filterTools = (tools) => {
     if (!searchTerm) return tools;
     return tools.filter(tool =>
-      tool.name.toLowerCase().includes(searchTerm.toLowerCase())
+      tool.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      tool.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
   };
 
@@ -72,8 +75,11 @@ const Home = () => {
                     to={tool.path}
                     className="tool-card"
                   >
-                    <span className="tool-icon">{tool.icon}</span>
-                    <span className="tool-name">{tool.name}</span>
+                    <div className="tool-icon">{tool.icon}</div>
+                    <div className="tool-info">
+                      <span className="tool-name">{tool.name}</span>
+                      <span className="tool-description">{tool.description}</span>
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -81,6 +87,10 @@ const Home = () => {
           );
         })}
       </div>
+
+      <footer className="home-footer">
+        <p>Made by sp3ked 🔥</p>
+      </footer>
     </div>
   );
 };

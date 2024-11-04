@@ -128,7 +128,7 @@
   flex-grow: 1;
 }
 
-/* Tool Cards */
+
 .tool-card {
   display: flex;
   align-items: center;
@@ -140,8 +140,7 @@
   text-decoration: none;
   color: var(--color-text);
   transition: all 0.2s ease;
-  width: 100%;
-  box-sizing: border-box;
+  height: 100%;
 }
 
 .tool-card:hover {
@@ -152,19 +151,120 @@
 }
 
 .tool-icon {
-  font-size: 1.5rem;
-  min-width: 2rem;
-  text-align: center;
-  flex-shrink: 0;
+  font-size: 1.75rem;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-card);
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-border);
+  transition: all 0.2s ease;
+}
+
+.tool-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
 }
 
 .tool-name {
   font-weight: 500;
-  flex-grow: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  color: var(--color-text);
+  font-size: 1rem;
 }
+
+.tool-description {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  line-height: 1.4;
+}
+
+.category-section {
+  background-color: var(--color-card);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+}
+
+.category-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.category-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.home-footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
+/* Hover effect for icons */
+.tool-card:hover .tool-icon {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
+  transform: scale(1.1);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .tool-card {
+    padding: 0.875rem;
+  }
+
+  .tool-icon {
+    font-size: 1.5rem;
+    min-width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .tool-name {
+    font-size: 0.9375rem;
+  }
+
+  .tool-description {
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-section {
+    padding: 1rem;
+  }
+
+  .tool-icon {
+    font-size: 1.25rem;
+    min-width: 2rem;
+    height: 2rem;
+  }
+
+  .tool-name {
+    font-size: 0.875rem;
+  }
+
+  .tool-description {
+    font-size: 0.75rem;
+  }
+}
+
+
 
 /* Responsive Breakpoints */
 @media (max-width: 1200px) {

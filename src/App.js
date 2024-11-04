@@ -9,6 +9,11 @@ import JSONFormatter from './tools/jsonformatter';
 import FontPairing from './tools/fontpairing';
 import CoinFlip from './tools/coinflip';
 import BillSplitter from './tools/billsplit';
+import ColorPalette from './tools/colorpallette';
+import RGBtoHEX from './tools/hex';
+import Snake from './tools/snake';
+import Tetris from './tools/tetris';
+
 
 function App() {
   return (
@@ -24,6 +29,10 @@ function App() {
         <Route path="/fontpairing" element={<FontPairing />} />
         <Route path="/coinflip" element={<CoinFlip />} />
         <Route path="/bill-splitter" element={<BillSplitter />} />
+        <Route path="/palette" element={<ColorPalette />} />
+        <Route path="/hex" element={<RGBtoHEX />} />
+        <Route path="/snake" element={<Snake />} />
+        <Route path="/tetris" element={<Tetris />} />
       </Routes>
     </Router>
   );
