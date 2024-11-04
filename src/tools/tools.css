@@ -1439,3 +1439,245 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Add to your tools.css */
+
+.color-converter-container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.color-preview {
+  height: 200px;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  border: 2px solid var(--color-border);
+}
+
+.color-values {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.converter-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: var(--color-background);
+  border-radius: 1rem;
+  border: 2px solid var(--color-border);
+}
+
+.toggle-mode-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-mode-button:hover {
+  background-color: var(--color-hover);
+  border-color: var(--color-primary);
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.rgb-inputs,
+.hex-input {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.converter-arrow {
+  color: var(--color-text-light);
+}
+
+.result-display {
+  width: 100%;
+}
+
+.result-display input {
+  font-family: monospace;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .color-preview {
+    height: 150px;
+  }
+
+  .input-row {
+    grid-template-columns: 1fr;
+  }
+
+  .converter-controls {
+    padding: 1rem;
+  }
+}
+
+/* Additional tool input styles */
+
+
+.tool-input[type="number"]::-webkit-outer-spin-button,
+.tool-input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.tool-input[readonly] {
+  background-color: var(--color-background);
+  cursor: default;
+}
+
+/* Add to your tools.css */
+
+.palette-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.palette-controls {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+  height: 300px;
+}
+
+.color-card {
+  position: relative;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.color-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.color-actions {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.color-card:hover .color-actions {
+  opacity: 1;
+}
+
+.color-action-button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.color-action-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.color-hex {
+  font-family: monospace;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.palette-info {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--color-background);
+  border-radius: 1rem;
+  border: 2px solid var(--color-border);
+}
+
+.palette-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--color-text);
+}
+
+.palette-info p {
+  margin: 0;
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
+.secondary {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+}
+
+.secondary:hover {
+  background-color: var(--color-hover);
+  border-color: var(--color-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .color-grid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .color-card {
+    height: 100px;
+  }
+
+  .color-actions {
+    opacity: 1;
+  }
+
+  .palette-controls {
+    flex-direction: column;
+  }
+
+  .tool-button {
+    width: 100%;
+  }
+}
