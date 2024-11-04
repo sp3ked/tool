@@ -9,7 +9,7 @@ import JSONFormatter from './tools/jsonformatter';
 import FontPairing from './tools/fontpairing';
 import CoinFlip from './tools/coinflip';
 import BillSplitter from './tools/billsplit';
-import ColorPalette from './tools/colorpallette';
+import ColorPalette from './tools/colorpalette';
 import RGBtoHEX from './tools/hex';
 import Snake from './tools/snake';
 import Tetris from './tools/tetris';

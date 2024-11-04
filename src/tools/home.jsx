@@ -8,7 +8,7 @@ const Home = () => {
 
   const toolCategories = {
     'Design & Colors': [
-      { id: 1, name: 'Color Palette Generator', path: '/colorpalette', icon: '🎨', description: 'Create beautiful color combinations' },
+      { id: 1, name: 'Color Palette Generator', path: '/palette', icon: '🎨', description: 'Create beautiful color combinations' },
       { id: 2, name: 'RGB to HEX', path: '/hex', icon: '🔄', description: 'Convert colors between formats' },
       { id: 3, name: 'Font Pairing Generator', path: '/fontpairing', icon: '🔤', description: 'Find perfect font combinations' },
     ],
