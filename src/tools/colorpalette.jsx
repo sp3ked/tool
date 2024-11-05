@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Copy, RefreshCw, Lock, Unlock, Download } from 'lucide-react';
 import './tools.css';
@@ -15,17 +15,17 @@ const ColorPaletteGenerator = () => {
   const [copied, setCopied] = useState(false);
 
   // Generate random hex color
-  const generateRandomColor = () => {
+  const generateRandomColor = useCallback(() => {
     const letters = '0123456789ABCDEF';
     let color = '#';
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-  };
+  }, []);
 
   // Convert hex to HSL
-  const hexToHSL = (hex) => {
+  const hexToHSL = useCallback((hex) => {
     let r = parseInt(hex.substring(1,3), 16) / 255;
     let g = parseInt(hex.substring(3,5), 16) / 255;
     let b = parseInt(hex.substring(5,7), 16) / 255;
@@ -49,10 +49,10 @@ const ColorPaletteGenerator = () => {
     }
 
     return { h: h * 360, s: s * 100, l: l * 100 };
-  };
+  }, []);
 
   // Convert HSL to hex
-  const hslToHex = (h, s, l) => {
+  const hslToHex = useCallback((h, s, l) => {
     l /= 100;
     const a = s * Math.min(l, 1 - l) / 100;
     const f = n => {
@@ -61,10 +61,10 @@ const ColorPaletteGenerator = () => {
       return Math.round(255 * color).toString(16).padStart(2, '0');
     };
     return `#${f(0)}${f(8)}${f(4)}`;
-  };
+  }, []);
 
-  // Generate monochromatic palette from base color
-  const generateMonochromatic = (baseColor) => {
+  // Generate monochromatic palette
+  const generateMonochromatic = useCallback((baseColor) => {
     const { h, s, l } = hexToHSL(baseColor);
     return [
       hslToHex(h, s, Math.max(0, l - 30)),
@@ -73,10 +73,10 @@ const ColorPaletteGenerator = () => {
       hslToHex(h, s, Math.min(100, l + 15)),
       hslToHex(h, s, Math.min(100, l + 30))
     ];
-  };
+  }, [hexToHSL, hslToHex]);
 
   // Generate complementary palette
-  const generateComplementary = (baseColor) => {
+  const generateComplementary = useCallback((baseColor) => {
     const { h, s, l } = hexToHSL(baseColor);
     return [
       baseColor,
@@ -85,10 +85,10 @@ const ColorPaletteGenerator = () => {
       hslToHex((h + 180) % 360, s, l),
       hslToHex((h + 180) % 360, s * 0.8, l)
     ];
-  };
+  }, [hexToHSL, hslToHex]);
 
   // Generate analogous palette
-  const generateAnalogous = (baseColor) => {
+  const generateAnalogous = useCallback((baseColor) => {
     const { h, s, l } = hexToHSL(baseColor);
     return [
       hslToHex((h - 40 + 360) % 360, s, l),
@@ -97,13 +97,12 @@ const ColorPaletteGenerator = () => {
       hslToHex((h + 20) % 360, s, l),
       hslToHex((h + 40) % 360, s, l)
     ];
-  };
+  }, [hexToHSL, hslToHex]);
 
-  const generateNewPalette = () => {
-    const newPalette = [...palette];
+  const generateNewPalette = useCallback(() => {
     const baseColor = generateRandomColor();
-
     let colors;
+
     switch (paletteType) {
       case 'monochromatic':
         colors = generateMonochromatic(baseColor);
@@ -118,24 +117,23 @@ const ColorPaletteGenerator = () => {
         colors = Array(5).fill().map(() => generateRandomColor());
     }
 
-    newPalette.forEach((color, index) => {
-      if (!color.locked) {
-        newPalette[index] = { ...color, hex: colors[index] };
-      }
-    });
+    setPalette(prevPalette => 
+      prevPalette.map((color, index) => 
+        color.locked ? color : { ...color, hex: colors[index] }
+      )
+    );
+  }, [paletteType, generateRandomColor, generateMonochromatic, generateComplementary, generateAnalogous]);
 
-    setPalette(newPalette);
-  };
-
-  // Generate palette on type change
   useEffect(() => {
     generateNewPalette();
-  }, [paletteType]);
+  }, [paletteType, generateNewPalette]);
 
   const toggleLock = (index) => {
-    const newPalette = [...palette];
-    newPalette[index] = { ...newPalette[index], locked: !newPalette[index].locked };
-    setPalette(newPalette);
+    setPalette(prev => {
+      const newPalette = [...prev];
+      newPalette[index] = { ...newPalette[index], locked: !newPalette[index].locked };
+      return newPalette;
+    });
   };
 
   const copyColor = async (hex) => {
@@ -182,7 +180,6 @@ const ColorPaletteGenerator = () => {
 
       <div className="tool-content">
         <div className="palette-container">
-          {/* Controls */}
           <div className="palette-controls">
             <select
               value={paletteType}
@@ -212,7 +209,6 @@ const ColorPaletteGenerator = () => {
             </button>
           </div>
 
-          {/* Color Palette */}
           <div className="color-grid">
             {palette.map((color, index) => (
               <div
@@ -246,7 +242,6 @@ const ColorPaletteGenerator = () => {
             ))}
           </div>
 
-          {/* Palette Info */}
           <div className="palette-info">
             <h3>Palette Type: {paletteType.charAt(0).toUpperCase() + paletteType.slice(1)}</h3>
             <p>Click on a color to copy its hex code. Lock colors to keep them in the next generation.</p>
