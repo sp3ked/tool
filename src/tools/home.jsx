@@ -28,7 +28,6 @@ const Home = () => {
     'Games': [
       { id: 11, name: 'Coin Flip', path: '/coinflip', icon: '🪙', description: 'Flip a virtual coin' },
       { id: 12, name: 'Snake', path: '/snake', icon: '🐍', description: 'Classic snake game' },
-      // { id: 13, name: 'Tetris', path: '/tetris', icon: '🎮', description: 'Classic block-stacking game' }
     ],
   };
 
